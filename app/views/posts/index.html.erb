@@ -1,0 +1,15 @@
+<h1>My Awesome Blog!</h1>
+
+<p>Welcome to my blog :)</p>
+
+<p>There are this many posts: <%=@posts.size%> </p>
+
+<ul>
+    <% @posts.each do |post| %>
+        <li>    
+            <%= link_to post.title, post_path(post) %>
+        </li>
+    <% end %>
+</ul>
+
+<%= button_to "New Post", new_post_path, method: :get %>

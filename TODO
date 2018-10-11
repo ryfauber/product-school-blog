@@ -1,0 +1,13 @@
+Adding Comments:
+
+- generate a migration: create_comments
+    -user_id (int)
+    -body (txt)
+    -post_id (int)
+- create a Comment model
+    rails generate scaffold comment user:references post:references body:text --no-jbuilder
+- move index of comments to posts#show
+    -load only for single post
+- move the new comment form to posts#show   
+    -auto-populate post_id
+- pick the user from the comment with a dropdown
