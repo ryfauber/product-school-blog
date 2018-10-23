@@ -25,7 +25,17 @@
           
           </li>
         </ul>
-        <%= link_to "Add post", new_post_path, class:"ml-auto btn btn-primary my-2 my-sm-0" %>
+        <div class ="ml-auto">
+          <% if @current_user %>
+            <%= @current_user.full_name %>
+          <% end %>
+          <%= link_to 'Add post', new_post_path, class: "btn btn-primary" %>
+        </div>
+        <% if alert %>
+      <div class="alert alert-danger" role="alert">
+        <%= alert %>
+      </div>
+    <% end %>
       </div>
     </nav>
 
