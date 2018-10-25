@@ -27,9 +27,23 @@
         </ul>
         <div class ="ml-auto">
           <% if @current_user %>
-            <%= @current_user.full_name %>
-          <% end %>
           <%= link_to 'Add post', new_post_path, class: "btn btn-primary" %>
+           <span class="dropdown">
+            <a class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+              <%= @current_user.full_name %>
+              <span class="caret"></span>
+            </a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+                <%= link_to 'Profile', user_path(@current_user), class: 'dropdown-item' %>
+                <%= link_to 'Posts', posts_path, class: 'dropdown-item' %>
+                <div class = "dropdown-divider"></div>
+                <%= link_to 'Logout', session_path(@current_user), method: :delete, class: 'dropdown-item' %>
+              </div>
+            </span>
+            
+          <% else %>
+            <%= link_to 'Login', new_session_path, class: "btn btn-primary" %>
+          <% end %>
         </div>
       </div>
     </nav>
