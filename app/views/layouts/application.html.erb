@@ -31,14 +31,21 @@
           <% end %>
           <%= link_to 'Add post', new_post_path, class: "btn btn-primary" %>
         </div>
-        <% if alert %>
+      </div>
+    </nav>
+    
+     <% if notice %>
+      <div class="alert alert-success" role="alert">
+        <%= notice %>
+      </div>
+    <% end %>
+    
+    <% if alert %>
       <div class="alert alert-danger" role="alert">
         <%= alert %>
       </div>
     <% end %>
-      </div>
-    </nav>
-
+    
     <div class = "row">
       <div class = "col-sm-10">
         <%= yield %>
