@@ -15,9 +15,15 @@ class SessionsController < ApplicationController
         
         if user.present?
             
-            session[:current_user_id] = user.id
-            redirect_to root_path, notice: " Welcome Back, #{user.first_name}!"
-            
+            if user.authenticate(params[:password])
+                
+                session[:current_user_id] = user.id
+                redirect_to root_path, notice: " Welcome Back, #{user.first_name}!"
+            else
+                flash[:alert] = 'Email or Password Incorrect'
+                render :new
+                
+            end
         else
             flash[:alert] = 'Email or Password Incorrect'
             render :new
