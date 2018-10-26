@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+    has_secure_password 
     
     DRIVING_AGE_LIMIT = 16
 

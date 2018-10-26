@@ -1,12 +1,18 @@
+<form>
 <%= form_tag sessions_path do %>
+    <div class="form-group">
     <label>
-        Email
-        <%= text_field_tag :email %>
-    </label>
+        Email:
+        <%= text_field_tag :email, params[:email], class: 'form-control' %>
+    </label for="exampleInputPassword1">
+    </div>
+    <div class="form-group">
     <label>
-        Password
-        <%= password_field_tag :password %>
+        Password:
+        <%= password_field_tag :password, "", class: 'form-control' %>
     </label>
-    
-    <%= submit_tag 'Sign In' %>
+    </div>
+    <%= submit_tag 'Sign In', class:"btn btn-primary" %>
 <%end%>
+
+
