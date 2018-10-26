@@ -53,10 +53,18 @@
       <div class = "col-sm-2">
         <div id="weather"></div>
         <script>
-          $.get('/weather',function(html){
-           var weatherContainer = document.getElementById("weather");
-           weatherContainer.innerHTML = html;
+        if (navigator && navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          var lat = Math.round(position.coords.latitude * 10000) / 10000
+          var lng = Math.round(position.coords.longitude * 10000) / 10000
+          
+          $.get('/weather',{lat: lat, lng: lng},function(html){
+          var weatherContainer = document.getElementById("weather");
+          weatherContainer.innerHTML = html;
           })
+        })
+      }
+         
         </script>
       </div>
       </div>
