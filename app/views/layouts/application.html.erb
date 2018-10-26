@@ -51,7 +51,13 @@
         <%= yield %>
       </div>
       <div class = "col-sm-2">
-        <img src="http://via.placeholder.com/400x800" class= "img-fluid" />
+        <div id="weather"></div>
+        <script>
+          $.get('/weather',function(html){
+           var weatherContainer = document.getElementById("weather");
+           weatherContainer.innerHTML = html;
+          })
+        </script>
       </div>
       </div>
     </div>
