@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   #patch '/posts/:id' => 'posts#update'
   #delete '/posts/:id' => 'posts#destroy'
   
+  get '/weather/' => 'weather#forecast'
+  
   resources :posts
   resources :users
   resources :comments, except: [:index, :show]
