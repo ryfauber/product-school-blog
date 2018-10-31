@@ -46,7 +46,10 @@ class PostsController < ApplicationController
     end
     
     def require_author
-        if @post.user_id != @current_user_id
+        if @current_user.blank?
+            redirect_to post_path(@post), alert: 'You must be logged in to edit posts'
+        
+        elsif !@current_user || @post.user_id != @current_user.id
             redirect_to post_path(@post), alert: 'You can only edit your own posts'
         end
     end

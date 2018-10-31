@@ -5,12 +5,6 @@ class CommentsControllerTest < ActionController::TestCase
     @comment = comments(:one)
   end
 
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:comments)
-  end
-
   test "should get new" do
     get :new
     assert_response :success
@@ -21,12 +15,7 @@ class CommentsControllerTest < ActionController::TestCase
       post :create, comment: { body: @comment.body, post_id: @comment.post_id, user_id: @comment.user_id }
     end
 
-    assert_redirected_to comment_path(assigns(:comment))
-  end
-
-  test "should show comment" do
-    get :show, id: @comment
-    assert_response :success
+    assert_redirected_to post_path(@comment.post_id)
   end
 
   test "should get edit" do
@@ -36,7 +25,7 @@ class CommentsControllerTest < ActionController::TestCase
 
   test "should update comment" do
     patch :update, id: @comment, comment: { body: @comment.body, post_id: @comment.post_id, user_id: @comment.user_id }
-    assert_redirected_to comment_path(assigns(:comment))
+    assert_redirected_to post_path(@comment.post)
   end
 
   test "should destroy comment" do
@@ -44,6 +33,6 @@ class CommentsControllerTest < ActionController::TestCase
       delete :destroy, id: @comment
     end
 
-    assert_redirected_to comments_path
+    assert_redirected_to post_path(@comment.post)
   end
 end
